@@ -1,0 +1,565 @@
+Jenkins : Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 6.5.0-1014-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+  System information as of Thu Apr 11 20:25:02 UTC 2024
+
+  System load:  1.5830078125      Processes:             118
+  Usage of /:   5.3% of 28.89GB   Users logged in:       0
+  Memory usage: 2%                IPv4 address for eth0: 172.31.8.79
+  Swap usage:   0%
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@ip-172-31-8-79:~$ sudo apt update 
+Hit:1 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy InRelease
+Get:2 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates InRelease [119 kB]
+Get:3 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-backports InRelease [109 kB]
+Get:4 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [14.1 MB]
+Get:5 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]           
+Get:6 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/universe Translation-en [5652 kB]
+Get:7 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/universe amd64 c-n-f Metadata [286 kB]
+Get:8 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [217 kB]
+Get:9 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/multiverse Translation-en [112 kB]
+Get:10 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/multiverse amd64 c-n-f Metadata [8372 B]
+Get:11 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [1562 kB]
+Get:12 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/main Translation-en [297 kB]
+Get:13 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [1702 kB]
+Get:14 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/restricted Translation-en [286 kB]
+Get:15 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1073 kB]
+Get:16 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/universe Translation-en [244 kB]
+Get:17 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 c-n-f Metadata [22.1 kB]
+Get:18 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [49.7 kB]
+Get:19 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/multiverse Translation-en [12.1 kB]
+Get:20 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 c-n-f Metadata [472 B]
+Get:21 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [67.1 kB]
+Get:22 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-backports/main Translation-en [11.0 kB]
+Get:23 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-backports/main amd64 c-n-f Metadata [388 B]
+Get:24 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-backports/restricted amd64 c-n-f Metadata [116 B]
+Get:25 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [28.4 kB]
+Get:26 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-backports/universe Translation-en [16.2 kB]
+Get:27 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-backports/universe amd64 c-n-f Metadata [644 B]
+Get:28 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-backports/multiverse amd64 c-n-f Metadata [116 B]
+Get:29 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [1343 kB]      
+Get:30 http://security.ubuntu.com/ubuntu jammy-security/main Translation-en [237 kB]
+Get:31 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [1662 kB]
+Get:32 http://security.ubuntu.com/ubuntu jammy-security/restricted Translation-en [280 kB]
+Get:33 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [851 kB]
+Get:34 http://security.ubuntu.com/ubuntu jammy-security/universe Translation-en [163 kB]
+Get:35 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 c-n-f Metadata [16.8 kB]
+Get:36 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [37.2 kB]
+Get:37 http://security.ubuntu.com/ubuntu jammy-security/multiverse Translation-en [7588 B]
+Get:38 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 c-n-f Metadata [260 B]
+Fetched 30.7 MB in 5s (6585 kB/s)                               
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+43 packages can be upgraded. Run 'apt list --upgradable' to see them.
+ubuntu@ip-172-31-8-79:~$ vi jen.sh
+ubuntu@ip-172-31-8-79:~$ sudo chmod +x jen.sh
+ubuntu@ip-172-31-8-79:~$ ls
+jen.sh
+ubuntu@ip-172-31-8-79:~$ ./jen.sh
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  alsa-topology-conf alsa-ucm-conf ca-certificates-java fontconfig-config fonts-dejavu-core java-common libasound2 libasound2-data libavahi-client3 libavahi-common-data
+  libavahi-common3 libcups2 libfontconfig1 libgraphite2-3 libharfbuzz0b libjpeg-turbo8 libjpeg8 liblcms2-2 libpcsclite1
+Suggested packages:
+  default-jre libasound2-plugins alsa-utils cups-common liblcms2-utils pcscd libnss-mdns fonts-dejavu-extra fonts-ipafont-gothic fonts-ipafont-mincho fonts-wqy-microhei
+  | fonts-wqy-zenhei fonts-indic
+The following NEW packages will be installed:
+  alsa-topology-conf alsa-ucm-conf ca-certificates-java fontconfig-config fonts-dejavu-core java-common libasound2 libasound2-data libavahi-client3 libavahi-common-data
+  libavahi-common3 libcups2 libfontconfig1 libgraphite2-3 libharfbuzz0b libjpeg-turbo8 libjpeg8 liblcms2-2 libpcsclite1 openjdk-17-jre-headless
+0 upgraded, 20 newly installed, 0 to remove and 43 not upgraded.
+Need to get 50.9 MB of archives.
+After this operation, 202 MB of additional disk space will be used.
+Get:1 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 alsa-topology-conf all 1.2.5.1-2 [15.5 kB]
+Get:2 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libasound2-data all 1.2.6.1-1ubuntu1 [19.1 kB]
+Get:3 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libasound2 amd64 1.2.6.1-1ubuntu1 [390 kB]
+Get:4 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 alsa-ucm-conf all 1.2.6.3-1ubuntu1.11 [43.6 kB]
+Get:5 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 java-common all 0.72build2 [6782 B]
+Get:6 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libavahi-common-data amd64 0.8-5ubuntu5.2 [23.8 kB]
+Get:7 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libavahi-common3 amd64 0.8-5ubuntu5.2 [23.9 kB]
+Get:8 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libavahi-client3 amd64 0.8-5ubuntu5.2 [28.0 kB]
+Get:9 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libcups2 amd64 2.4.1op1-1ubuntu4.8 [264 kB]
+Get:10 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 liblcms2-2 amd64 2.12~rc1-2build2 [159 kB]
+Get:11 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libjpeg-turbo8 amd64 2.1.2-0ubuntu1 [134 kB]
+Get:12 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libjpeg8 amd64 8c-2ubuntu10 [2264 B]
+Get:13 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 fonts-dejavu-core all 2.37-2build1 [1041 kB]
+Get:14 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 fontconfig-config all 2.13.1-4.2ubuntu5 [29.1 kB]
+Get:15 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libfontconfig1 amd64 2.13.1-4.2ubuntu5 [131 kB]
+Get:16 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libgraphite2-3 amd64 1.3.14-1build2 [71.3 kB]
+Get:17 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libharfbuzz0b amd64 2.7.4-1ubuntu3.1 [352 kB]
+Get:18 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libpcsclite1 amd64 1.9.5-3ubuntu1 [19.8 kB]
+Get:19 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 openjdk-17-jre-headless amd64 17.0.10+7-1~22.04.1 [48.2 MB]
+Get:20 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 ca-certificates-java all 20190909ubuntu1.2 [12.1 kB]
+Fetched 50.9 MB in 1s (47.1 MB/s)
+Selecting previously unselected package alsa-topology-conf.
+(Reading database ... 65273 files and directories currently installed.)
+Preparing to unpack .../00-alsa-topology-conf_1.2.5.1-2_all.deb ...
+Unpacking alsa-topology-conf (1.2.5.1-2) ...
+Selecting previously unselected package libasound2-data.
+Preparing to unpack .../01-libasound2-data_1.2.6.1-1ubuntu1_all.deb ...
+Unpacking libasound2-data (1.2.6.1-1ubuntu1) ...
+Selecting previously unselected package libasound2:amd64.
+Preparing to unpack .../02-libasound2_1.2.6.1-1ubuntu1_amd64.deb ...
+Unpacking libasound2:amd64 (1.2.6.1-1ubuntu1) ...
+Selecting previously unselected package alsa-ucm-conf.
+Preparing to unpack .../03-alsa-ucm-conf_1.2.6.3-1ubuntu1.11_all.deb ...
+Unpacking alsa-ucm-conf (1.2.6.3-1ubuntu1.11) ...
+Selecting previously unselected package java-common.
+Preparing to unpack .../04-java-common_0.72build2_all.deb ...
+Unpacking java-common (0.72build2) ...
+Selecting previously unselected package libavahi-common-data:amd64.
+Preparing to unpack .../05-libavahi-common-data_0.8-5ubuntu5.2_amd64.deb ...
+Unpacking libavahi-common-data:amd64 (0.8-5ubuntu5.2) ...
+Selecting previously unselected package libavahi-common3:amd64.
+Preparing to unpack .../06-libavahi-common3_0.8-5ubuntu5.2_amd64.deb ...
+Unpacking libavahi-common3:amd64 (0.8-5ubuntu5.2) ...
+Selecting previously unselected package libavahi-client3:amd64.
+Preparing to unpack .../07-libavahi-client3_0.8-5ubuntu5.2_amd64.deb ...
+Unpacking libavahi-client3:amd64 (0.8-5ubuntu5.2) ...
+Selecting previously unselected package libcups2:amd64.
+Preparing to unpack .../08-libcups2_2.4.1op1-1ubuntu4.8_amd64.deb ...
+Unpacking libcups2:amd64 (2.4.1op1-1ubuntu4.8) ...
+Selecting previously unselected package liblcms2-2:amd64.
+Preparing to unpack .../09-liblcms2-2_2.12~rc1-2build2_amd64.deb ...
+Unpacking liblcms2-2:amd64 (2.12~rc1-2build2) ...
+Selecting previously unselected package libjpeg-turbo8:amd64.
+Preparing to unpack .../10-libjpeg-turbo8_2.1.2-0ubuntu1_amd64.deb ...
+Unpacking libjpeg-turbo8:amd64 (2.1.2-0ubuntu1) ...
+Selecting previously unselected package libjpeg8:amd64.
+Preparing to unpack .../11-libjpeg8_8c-2ubuntu10_amd64.deb ...
+Unpacking libjpeg8:amd64 (8c-2ubuntu10) ...
+Selecting previously unselected package fonts-dejavu-core.
+Preparing to unpack .../12-fonts-dejavu-core_2.37-2build1_all.deb ...
+Unpacking fonts-dejavu-core (2.37-2build1) ...
+Selecting previously unselected package fontconfig-config.
+Preparing to unpack .../13-fontconfig-config_2.13.1-4.2ubuntu5_all.deb ...
+Unpacking fontconfig-config (2.13.1-4.2ubuntu5) ...
+Selecting previously unselected package libfontconfig1:amd64.
+Preparing to unpack .../14-libfontconfig1_2.13.1-4.2ubuntu5_amd64.deb ...
+Unpacking libfontconfig1:amd64 (2.13.1-4.2ubuntu5) ...
+Selecting previously unselected package libgraphite2-3:amd64.
+Preparing to unpack .../15-libgraphite2-3_1.3.14-1build2_amd64.deb ...
+Unpacking libgraphite2-3:amd64 (1.3.14-1build2) ...
+Selecting previously unselected package libharfbuzz0b:amd64.
+Preparing to unpack .../16-libharfbuzz0b_2.7.4-1ubuntu3.1_amd64.deb ...
+Unpacking libharfbuzz0b:amd64 (2.7.4-1ubuntu3.1) ...
+Selecting previously unselected package libpcsclite1:amd64.
+Preparing to unpack .../17-libpcsclite1_1.9.5-3ubuntu1_amd64.deb ...
+Unpacking libpcsclite1:amd64 (1.9.5-3ubuntu1) ...
+Selecting previously unselected package openjdk-17-jre-headless:amd64.
+Preparing to unpack .../18-openjdk-17-jre-headless_17.0.10+7-1~22.04.1_amd64.deb ...
+Unpacking openjdk-17-jre-headless:amd64 (17.0.10+7-1~22.04.1) ...
+Selecting previously unselected package ca-certificates-java.
+Preparing to unpack .../19-ca-certificates-java_20190909ubuntu1.2_all.deb ...
+Unpacking ca-certificates-java (20190909ubuntu1.2) ...
+Setting up libgraphite2-3:amd64 (1.3.14-1build2) ...
+Setting up liblcms2-2:amd64 (2.12~rc1-2build2) ...
+Setting up java-common (0.72build2) ...
+Setting up libasound2-data (1.2.6.1-1ubuntu1) ...
+Setting up libavahi-common-data:amd64 (0.8-5ubuntu5.2) ...
+Setting up fonts-dejavu-core (2.37-2build1) ...
+Setting up libpcsclite1:amd64 (1.9.5-3ubuntu1) ...
+Setting up libjpeg-turbo8:amd64 (2.1.2-0ubuntu1) ...
+Setting up alsa-topology-conf (1.2.5.1-2) ...
+Setting up libasound2:amd64 (1.2.6.1-1ubuntu1) ...
+Setting up libharfbuzz0b:amd64 (2.7.4-1ubuntu3.1) ...
+Setting up libjpeg8:amd64 (8c-2ubuntu10) ...
+Setting up alsa-ucm-conf (1.2.6.3-1ubuntu1.11) ...
+Setting up fontconfig-config (2.13.1-4.2ubuntu5) ...
+Setting up libavahi-common3:amd64 (0.8-5ubuntu5.2) ...
+Setting up libfontconfig1:amd64 (2.13.1-4.2ubuntu5) ...
+Setting up libavahi-client3:amd64 (0.8-5ubuntu5.2) ...
+Setting up libcups2:amd64 (2.4.1op1-1ubuntu4.8) ...
+Setting up ca-certificates-java (20190909ubuntu1.2) ...
+head: cannot open '/etc/ssl/certs/java/cacerts' for reading: No such file or directory
+Adding debian:E-Tugra_Global_Root_CA_RSA_v3.pem
+Adding debian:Actalis_Authentication_Root_CA.pem
+Adding debian:emSign_Root_CA_-_C1.pem
+Adding debian:DigiCert_TLS_ECC_P384_Root_G5.pem
+Adding debian:GlobalSign_Root_R46.pem
+Adding debian:TWCA_Global_Root_CA.pem
+Adding debian:OISTE_WISeKey_Global_Root_GC_CA.pem
+Adding debian:AffirmTrust_Networking.pem
+Adding debian:ePKI_Root_Certification_Authority.pem
+Adding debian:SZAFIR_ROOT_CA2.pem
+Adding debian:Secure_Global_CA.pem
+Adding debian:Amazon_Root_CA_1.pem
+Adding debian:COMODO_RSA_Certification_Authority.pem
+Adding debian:TWCA_Root_Certification_Authority.pem
+Adding debian:SSL.com_EV_Root_Certification_Authority_ECC.pem
+Adding debian:HARICA_TLS_RSA_Root_CA_2021.pem
+Adding debian:TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.pem
+Adding debian:Microsec_e-Szigno_Root_CA_2009.pem
+Adding debian:Certainly_Root_R1.pem
+Adding debian:D-TRUST_Root_Class_3_CA_2_2009.pem
+Adding debian:DigiCert_High_Assurance_EV_Root_CA.pem
+Adding debian:NAVER_Global_Root_Certification_Authority.pem
+Adding debian:UCA_Global_G2_Root.pem
+Adding debian:e-Szigno_Root_CA_2017.pem
+Adding debian:OISTE_WISeKey_Global_Root_GB_CA.pem
+Adding debian:E-Tugra_Certification_Authority.pem
+Adding debian:GDCA_TrustAUTH_R5_ROOT.pem
+Adding debian:GlobalSign_Root_CA_-_R6.pem
+Adding debian:certSIGN_Root_CA_G2.pem
+Adding debian:ANF_Secure_Server_Root_CA.pem
+Adding debian:vTrus_Root_CA.pem
+Adding debian:Certainly_Root_E1.pem
+Adding debian:TeliaSonera_Root_CA_v1.pem
+Adding debian:Entrust.net_Premium_2048_Secure_Server_CA.pem
+Adding debian:E-Tugra_Global_Root_CA_ECC_v3.pem
+Adding debian:Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068_2.pem
+Adding debian:DigiCert_TLS_RSA4096_Root_G5.pem
+Adding debian:Starfield_Root_Certificate_Authority_-_G2.pem
+Adding debian:TunTrust_Root_CA.pem
+Adding debian:T-TeleSec_GlobalRoot_Class_3.pem
+Adding debian:QuoVadis_Root_CA_3.pem
+Adding debian:Security_Communication_RootCA2.pem
+Adding debian:DigiCert_Assured_ID_Root_G2.pem
+Adding debian:SwissSign_Silver_CA_-_G2.pem
+Adding debian:GLOBALTRUST_2020.pem
+Adding debian:IdenTrust_Public_Sector_Root_CA_1.pem
+Adding debian:SSL.com_Root_Certification_Authority_RSA.pem
+Adding debian:Buypass_Class_3_Root_CA.pem
+Adding debian:Hongkong_Post_Root_CA_3.pem
+Adding debian:GlobalSign_Root_CA_-_R3.pem
+Adding debian:SecureSign_RootCA11.pem
+Adding debian:Hongkong_Post_Root_CA_1.pem
+Adding debian:USERTrust_RSA_Certification_Authority.pem
+Adding debian:XRamp_Global_CA_Root.pem
+Adding debian:SwissSign_Gold_CA_-_G2.pem
+Adding debian:NetLock_Arany_=Class_Gold=_Főtanúsítvány.pem
+Adding debian:ISRG_Root_X2.pem
+Adding debian:D-TRUST_EV_Root_CA_1_2020.pem
+Adding debian:T-TeleSec_GlobalRoot_Class_2.pem
+Adding debian:COMODO_ECC_Certification_Authority.pem
+Adding debian:Security_Communication_RootCA3.pem
+Adding debian:AffirmTrust_Commercial.pem
+Adding debian:DigiCert_Global_Root_G3.pem
+Adding debian:DigiCert_Global_Root_G2.pem
+Adding debian:Starfield_Services_Root_Certificate_Authority_-_G2.pem
+Adding debian:Atos_TrustedRoot_2011.pem
+Adding debian:Security_Communication_ECC_RootCA1.pem
+Adding debian:Entrust_Root_Certification_Authority.pem
+Adding debian:QuoVadis_Root_CA_1_G3.pem
+Adding debian:DigiCert_Assured_ID_Root_CA.pem
+Adding debian:ACCVRAIZ1.pem
+Adding debian:DigiCert_Trusted_Root_G4.pem
+Adding debian:AC_RAIZ_FNMT-RCM_SERVIDORES_SEGUROS.pem
+Adding debian:AffirmTrust_Premium.pem
+Adding debian:Amazon_Root_CA_2.pem
+Adding debian:Go_Daddy_Root_Certificate_Authority_-_G2.pem
+Adding debian:ISRG_Root_X1.pem
+Adding debian:D-TRUST_BR_Root_CA_1_2020.pem
+Adding debian:Amazon_Root_CA_4.pem
+Adding debian:SecureTrust_CA.pem
+Adding debian:GTS_Root_R4.pem
+Adding debian:Security_Communication_Root_CA.pem
+Adding debian:AffirmTrust_Premium_ECC.pem
+Adding debian:GlobalSign_Root_E46.pem
+Adding debian:Entrust_Root_Certification_Authority_-_EC1.pem
+Adding debian:Certum_Trusted_Network_CA_2.pem
+Adding debian:emSign_Root_CA_-_G1.pem
+Adding debian:Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.pem
+Adding debian:GTS_Root_R1.pem
+Adding debian:Izenpe.com.pem
+Adding debian:Certum_Trusted_Root_CA.pem
+Adding debian:AC_RAIZ_FNMT-RCM.pem
+Adding debian:Comodo_AAA_Services_root.pem
+Adding debian:COMODO_Certification_Authority.pem
+Adding debian:CA_Disig_Root_R2.pem
+Adding debian:Buypass_Class_2_Root_CA.pem
+Adding debian:Starfield_Class_2_CA.pem
+Adding debian:CFCA_EV_ROOT.pem
+Adding debian:certSIGN_ROOT_CA.pem
+Adding debian:QuoVadis_Root_CA_3_G3.pem
+Adding debian:emSign_ECC_Root_CA_-_G3.pem
+Adding debian:Trustwave_Global_ECC_P384_Certification_Authority.pem
+Adding debian:Certigna.pem
+Adding debian:Baltimore_CyberTrust_Root.pem
+Adding debian:Certigna_Root_CA.pem
+Adding debian:GTS_Root_R2.pem
+Adding debian:QuoVadis_Root_CA_2.pem
+Adding debian:emSign_ECC_Root_CA_-_C3.pem
+Adding debian:USERTrust_ECC_Certification_Authority.pem
+Adding debian:SSL.com_EV_Root_Certification_Authority_RSA_R2.pem
+Adding debian:UCA_Extended_Validation_Root.pem
+Adding debian:GTS_Root_R3.pem
+Adding debian:DigiCert_Assured_ID_Root_G3.pem
+Adding debian:Entrust_Root_Certification_Authority_-_G2.pem
+Adding debian:SSL.com_Root_Certification_Authority_ECC.pem
+Adding debian:Amazon_Root_CA_3.pem
+Adding debian:HiPKI_Root_CA_-_G1.pem
+Adding debian:Go_Daddy_Class_2_CA.pem
+Adding debian:Trustwave_Global_ECC_P256_Certification_Authority.pem
+Adding debian:DigiCert_Global_Root_CA.pem
+Adding debian:Entrust_Root_Certification_Authority_-_G4.pem
+Adding debian:GlobalSign_ECC_Root_CA_-_R4.pem
+Adding debian:HARICA_TLS_ECC_Root_CA_2021.pem
+Adding debian:IdenTrust_Commercial_Root_CA_1.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_ECC_RootCA_2015.pem
+Adding debian:QuoVadis_Root_CA_2_G3.pem
+Adding debian:Certum_EC-384_CA.pem
+Adding debian:GlobalSign_ECC_Root_CA_-_R5.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_RootCA_2015.pem
+Adding debian:Certum_Trusted_Network_CA.pem
+Adding debian:Trustwave_Global_Certification_Authority.pem
+Adding debian:GlobalSign_Root_CA.pem
+Adding debian:vTrus_ECC_Root_CA.pem
+Adding debian:D-TRUST_Root_Class_3_CA_2_EV_2009.pem
+Adding debian:Telia_Root_CA_v2.pem
+Adding debian:Microsoft_ECC_Root_Certificate_Authority_2017.pem
+Adding debian:Microsoft_RSA_Root_Certificate_Authority_2017.pem
+done.
+Processing triggers for libc-bin (2.35-0ubuntu3.6) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for ca-certificates (20230311ubuntu0.22.04.1) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+
+done.
+done.
+Setting up openjdk-17-jre-headless:amd64 (17.0.10+7-1~22.04.1) ...
+update-alternatives: using /usr/lib/jvm/java-17-openjdk-amd64/bin/java to provide /usr/bin/java (java) in auto mode
+update-alternatives: using /usr/lib/jvm/java-17-openjdk-amd64/bin/jpackage to provide /usr/bin/jpackage (jpackage) in auto mode
+update-alternatives: using /usr/lib/jvm/java-17-openjdk-amd64/bin/keytool to provide /usr/bin/keytool (keytool) in auto mode
+update-alternatives: using /usr/lib/jvm/java-17-openjdk-amd64/bin/rmiregistry to provide /usr/bin/rmiregistry (rmiregistry) in auto mode
+update-alternatives: using /usr/lib/jvm/java-17-openjdk-amd64/lib/jexec to provide /usr/bin/jexec (jexec) in auto mode
+Scanning processes...                                                                                                                                                                   
+Scanning linux images...                                                                                                                                                                
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+--2024-04-11 20:44:24--  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+Resolving pkg.jenkins.io (pkg.jenkins.io)... 151.101.30.133, 2a04:4e42:7::645
+Connecting to pkg.jenkins.io (pkg.jenkins.io)|151.101.30.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3175 (3.1K) [application/pgp-keys]
+Saving to: ‘/usr/share/keyrings/jenkins-keyring.asc’
+
+/usr/share/keyrings/jenkins-keyring.asc       100%[=================================================================================================>]   3.10K  --.-KB/s    in 0s      
+
+2024-04-11 20:44:25 (33.2 MB/s) - ‘/usr/share/keyrings/jenkins-keyring.asc’ saved [3175/3175]
+
+Hit:1 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy InRelease
+Hit:2 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates InRelease                     
+Hit:3 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-backports InRelease                   
+Ign:4 https://pkg.jenkins.io/debian-stable binary/ InRelease                                          
+Get:5 https://pkg.jenkins.io/debian-stable binary/ Release [2044 B]                                   
+Get:6 https://pkg.jenkins.io/debian-stable binary/ Release.gpg [833 B]           
+Get:7 https://pkg.jenkins.io/debian-stable binary/ Packages [26.6 kB]
+Hit:8 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Fetched 29.5 kB in 1s (46.6 kB/s)
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  net-tools
+The following NEW packages will be installed:
+  jenkins net-tools
+0 upgraded, 2 newly installed, 0 to remove and 43 not upgraded.
+Need to get 86.0 MB of archives.
+After this operation, 87.4 MB of additional disk space will be used.
+Get:1 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 net-tools amd64 1.60+git20181103.0eebece-1ubuntu5 [204 kB]
+Get:2 https://pkg.jenkins.io/debian-stable binary/ jenkins 2.440.2 [85.8 MB]     
+Fetched 86.0 MB in 9s (9577 kB/s)                                                                                                                                                      
+Selecting previously unselected package net-tools.
+(Reading database ... 66355 files and directories currently installed.)
+Preparing to unpack .../net-tools_1.60+git20181103.0eebece-1ubuntu5_amd64.deb ...
+Unpacking net-tools (1.60+git20181103.0eebece-1ubuntu5) ...
+Selecting previously unselected package jenkins.
+Preparing to unpack .../jenkins_2.440.2_all.deb ...
+Unpacking jenkins (2.440.2) ...
+Setting up net-tools (1.60+git20181103.0eebece-1ubuntu5) ...
+Setting up jenkins (2.440.2) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/jenkins.service → /lib/systemd/system/jenkins.service.
+Processing triggers for man-db (2.10.2-1) ...
+Scanning processes...                                                                                                                                                                   
+Scanning linux images...                                                                                                                                                                
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+ubuntu@ip-172-31-8-79:~$ vim doc.sh
+ubuntu@ip-172-31-8-79:~$ sudo chmod +x doc.sh
+ubuntu@ip-172-31-8-79:~$ ls
+doc.sh  jen.sh
+ubuntu@ip-172-31-8-79:~$ ./doc.sh
+Hit:1 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy InRelease
+Hit:2 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates InRelease                     
+Hit:3 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-backports InRelease                   
+Ign:4 https://pkg.jenkins.io/debian-stable binary/ InRelease                                          
+Hit:5 https://pkg.jenkins.io/debian-stable binary/ Release                                            
+Hit:7 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+ca-certificates is already the newest version (20230311ubuntu0.22.04.1).
+ca-certificates set to manually installed.
+The following packages will be upgraded:
+  curl libcurl4
+2 upgraded, 0 newly installed, 0 to remove and 41 not upgraded.
+Need to get 484 kB of archives.
+After this operation, 0 B of additional disk space will be used.
+Get:1 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 curl amd64 7.81.0-1ubuntu1.16 [194 kB]
+Get:2 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libcurl4 amd64 7.81.0-1ubuntu1.16 [290 kB]
+Fetched 484 kB in 0s (16.0 MB/s)   
+(Reading database ... 66418 files and directories currently installed.)
+Preparing to unpack .../curl_7.81.0-1ubuntu1.16_amd64.deb ...
+Unpacking curl (7.81.0-1ubuntu1.16) over (7.81.0-1ubuntu1.15) ...
+Preparing to unpack .../libcurl4_7.81.0-1ubuntu1.16_amd64.deb ...
+Unpacking libcurl4:amd64 (7.81.0-1ubuntu1.16) over (7.81.0-1ubuntu1.15) ...
+Setting up libcurl4:amd64 (7.81.0-1ubuntu1.16) ...
+Setting up curl (7.81.0-1ubuntu1.16) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.6) ...
+Scanning processes...                                                                                                                                                                   
+Scanning linux images...                                                                                                                                                                
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+Hit:1 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy InRelease
+Hit:2 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-updates InRelease                                                                                            
+Hit:3 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy-backports InRelease                                                                                          
+Get:4 https://download.docker.com/linux/ubuntu jammy InRelease [48.8 kB]                                                                                                     
+Ign:5 https://pkg.jenkins.io/debian-stable binary/ InRelease                                                                                                                 
+Hit:6 https://pkg.jenkins.io/debian-stable binary/ Release                                                                                                                   
+Get:7 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages [29.9 kB]
+Hit:8 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Fetched 78.8 kB in 1s (131 kB/s)
+Reading package lists... Done
+ubuntu@ip-172-31-8-79:~$ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y 
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  docker-ce-rootless-extras libltdl7 libslirp0 pigz slirp4netns
+Suggested packages:
+  aufs-tools cgroupfs-mount | cgroup-lite
+The following NEW packages will be installed:
+  containerd.io docker-buildx-plugin docker-ce docker-ce-cli docker-ce-rootless-extras docker-compose-plugin libltdl7 libslirp0 pigz slirp4netns
+0 upgraded, 10 newly installed, 0 to remove and 41 not upgraded.
+Need to get 120 MB of archives.
+After this operation, 430 MB of additional disk space will be used.
+Get:1 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/universe amd64 pigz amd64 2.6-1 [63.6 kB]
+Get:2 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libltdl7 amd64 2.4.6-15build2 [39.6 kB]
+Get:3 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libslirp0 amd64 4.6.1-1build1 [61.5 kB]
+Get:4 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu jammy/universe amd64 slirp4netns amd64 1.0.1-2 [28.2 kB]
+Get:5 https://download.docker.com/linux/ubuntu jammy/stable amd64 containerd.io amd64 1.6.31-1 [29.8 MB]
+Get:6 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-buildx-plugin amd64 0.13.1-1~ubuntu.22.04~jammy [29.5 MB]
+Get:7 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-ce-cli amd64 5:26.0.1-1~ubuntu.22.04~jammy [13.8 MB]
+Get:8 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-ce amd64 5:26.0.1-1~ubuntu.22.04~jammy [25.1 MB]
+Get:9 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-ce-rootless-extras amd64 5:26.0.1-1~ubuntu.22.04~jammy [9319 kB]
+Get:10 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-compose-plugin amd64 2.26.1-1~ubuntu.22.04~jammy [12.4 MB]
+Fetched 120 MB in 2s (75.8 MB/s)                 
+Selecting previously unselected package pigz.
+(Reading database ... 66418 files and directories currently installed.)
+Preparing to unpack .../0-pigz_2.6-1_amd64.deb ...
+Unpacking pigz (2.6-1) ...
+Selecting previously unselected package containerd.io.
+Preparing to unpack .../1-containerd.io_1.6.31-1_amd64.deb ...
+Unpacking containerd.io (1.6.31-1) ...
+Selecting previously unselected package docker-buildx-plugin.
+Preparing to unpack .../2-docker-buildx-plugin_0.13.1-1~ubuntu.22.04~jammy_amd64.deb ...
+Unpacking docker-buildx-plugin (0.13.1-1~ubuntu.22.04~jammy) ...
+Selecting previously unselected package docker-ce-cli.
+Preparing to unpack .../3-docker-ce-cli_5%3a26.0.1-1~ubuntu.22.04~jammy_amd64.deb ...
+Unpacking docker-ce-cli (5:26.0.1-1~ubuntu.22.04~jammy) ...
+Selecting previously unselected package docker-ce.
+Preparing to unpack .../4-docker-ce_5%3a26.0.1-1~ubuntu.22.04~jammy_amd64.deb ...
+Unpacking docker-ce (5:26.0.1-1~ubuntu.22.04~jammy) ...
+Selecting previously unselected package docker-ce-rootless-extras.
+Preparing to unpack .../5-docker-ce-rootless-extras_5%3a26.0.1-1~ubuntu.22.04~jammy_amd64.deb ...
+Unpacking docker-ce-rootless-extras (5:26.0.1-1~ubuntu.22.04~jammy) ...
+Selecting previously unselected package docker-compose-plugin.
+Preparing to unpack .../6-docker-compose-plugin_2.26.1-1~ubuntu.22.04~jammy_amd64.deb ...
+Unpacking docker-compose-plugin (2.26.1-1~ubuntu.22.04~jammy) ...
+Selecting previously unselected package libltdl7:amd64.
+Preparing to unpack .../7-libltdl7_2.4.6-15build2_amd64.deb ...
+Unpacking libltdl7:amd64 (2.4.6-15build2) ...
+Selecting previously unselected package libslirp0:amd64.
+Preparing to unpack .../8-libslirp0_4.6.1-1build1_amd64.deb ...
+Unpacking libslirp0:amd64 (4.6.1-1build1) ...
+Selecting previously unselected package slirp4netns.
+Preparing to unpack .../9-slirp4netns_1.0.1-2_amd64.deb ...
+Unpacking slirp4netns (1.0.1-2) ...
+Setting up docker-buildx-plugin (0.13.1-1~ubuntu.22.04~jammy) ...
+Setting up containerd.io (1.6.31-1) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/containerd.service → /lib/systemd/system/containerd.service.
+Setting up docker-compose-plugin (2.26.1-1~ubuntu.22.04~jammy) ...
+Setting up libltdl7:amd64 (2.4.6-15build2) ...
+Setting up docker-ce-cli (5:26.0.1-1~ubuntu.22.04~jammy) ...
+Setting up libslirp0:amd64 (4.6.1-1build1) ...
+Setting up pigz (2.6-1) ...
+Setting up docker-ce-rootless-extras (5:26.0.1-1~ubuntu.22.04~jammy) ...
+Setting up slirp4netns (1.0.1-2) ...
+Setting up docker-ce (5:26.0.1-1~ubuntu.22.04~jammy) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /lib/systemd/system/docker.service.
+Created symlink /etc/systemd/system/sockets.target.wants/docker.socket → /lib/systemd/system/docker.socket.
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.6) ...
+Scanning processes...                                                                                                                                                                   
+Scanning linux images...                                                                                                                                                                
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+ubuntu@ip-172-31-8-79:~$ sudo chmod 666 /var/run/docker.sock
+ubuntu@ip-172-31-8-79:~$ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+2137a8d4881e476bb9e6ddec4bd1d4c6
+ubuntu@ip-172-31-8-79:~$   
