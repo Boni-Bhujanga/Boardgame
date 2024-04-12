@@ -1,0 +1,22 @@
+root@ip-172-31-12-151:/home/ubuntu# history
+    1  vi 1.sh
+    2  chmod +x 1.sh
+    3  ls
+    4  ./1.sh
+    5  sudo apt update
+    6  sudo apt install -y kubeadm=1.28.1-1.1 kubelet=1.28.1-1.1 kubectl=1.28.1-1.1
+    7  sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+    8  mkdir -p $HOME/.kube
+    9  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   10  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+   11  kubectl get nodes
+   12  kubectl apply -f https://docs.projectcalico.org/v3.20/manifests/calico.yaml
+   13  kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.49.0/deploy/static/provider/baremetal/deploy.yaml
+   14  wget https://github.com/Shopify/kubeaudit/releases/download/v0.22.1/kubeaudit_0.22.1_linux_amd64.tar.gz
+   15  tar -xvzf kubeaudit_0.22.1_linux_amd64.tar.gz
+   16  sudo mv kubeaudit /usr/local/bin/
+   17  kubeaudit all
+   18  histroty
+   19  history
+   20  clear
+   21  history
