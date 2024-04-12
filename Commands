@@ -1,0 +1,350 @@
+# Only on Master Node & both Worker Nodes 
+# 1.sh file 
+
+sudo apt-get update
+
+sudo apt install docker.io -y
+sudo chmod 666 /var/run/docker.sock
+
+sudo apt-get install -y apt-transport-https ca-certificates curl gnupg
+sudo mkdir -p -m 755 /etc/apt/keyrings
+
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+-----------------------------------------------------
+
+
+sudo apt update
+
+sudo apt install -y kubeadm=1.28.1-1.1 kubelet=1.28.1-1.1 kubectl=1.28.1-1.1
+                    cluster             creates pods        CLI
+
+-------------------------------------------------
+
+
+# below Only on Master Node 
+
+
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16 
+
+Below will generated and should be added to instance where you need to make kubernetes worker node 
+kubeadm join 172.31.4.182:6443 --token einj65.6zv9ycri5b4j7kpq \
+        --discovery-token-ca-cert-hash sha256:ad3adaeaf879a3e939004a40a77e9d20b3ed79f2e2b6f5c697784f55918013cd
+
+
+-----------------------------------------------------------
+
+# Below are the files need to be created 
+
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+
+
+# Below are network related yaml files to create resources 
+
+always run it on the user not on root user
+
+kubectl apply -f https://docs.projectcalico.org/v3.20/manifests/calico.yaml
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.49.0/deploy/static/provider/baremetal/deploy.yaml
+
+-----------------------------------------------------------------
+scaning the clister :
+
+wget https://github.com/Shopify/kubeaudit/releases/download/v0.22.1/kubeaudit_0.22.1_linux_amd64.tar.gz
+
+tar -xvzf kubeaudit_0.22.1_linux_amd64.tar.gz
+sudo mv kubeaudit /usr/local/bin/
+kubeaudit all   --- > Gives Security vulnerable report can be used by Infra team.
+
+kubectl get nodes # Run on master to get nodes of slave instances
+
+-------------------------------------------------
+
+# install Docker on Sonar and Nexus 
+
+sudo su
+vim doc.sh 
+---
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+:wq!
+chmod +x doc.sh
+./doc.sh
+-----
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y 
+
+sudo chmod 666 /var/run/docker.sock #To give rrot permission to other users
+
+# Create Docker Container on sonar and nexus 
+
+docker run -d --name sonar -p 9000:9000 sonarqube:lts-community # Run on sonar server
+docker run -d --name Nexus -p 8081:8081 sonatype/nexus3 #Run on Nexus server
+
+
+docker ps # to check docker container on servers 
+
+
+docker exec -it 86e214a9cb07 /bin/bash # to get admin password from the Nexus file
+
+
+Sonarqube 
+Username : Admin
+Password : Boni@499
+
+on nexus server: docker exec -it container-ID /bin/bash #then go to sonatype-work/nexus3/admin.password and get the password to configure nexus 
+Nexus 
+Username : Admin
+Password : Boni@499 
+
+----------------------------------------------------------------
+
+#Java setup on jenkins server 
+
+sudo apt update 
+
+#installing Java on jenkins as pre-requisite 
+vi jen.sh
+
+sudo apt install openjdk-17-jre-headless -y 
+
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins -y
+
+
+
+
+# Install docker on Jenkins 
+
+--------------------------------------------------------
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+----------------------------------------------------------
+ 
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y 
+sudo chmod 666 /var/run/docker.sock
+
+
+Jenkins 
+
+Username : bhujanga
+Password : Boni@499 
+
+
+Jenkins URL : http://52.66.71.82:8080/
+
+
+# Install Trivi on Jenkins server:
+
+sudo apt-get install wget apt-transport-https gnupg lsb-release
+
+wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --dearmor | sudo tee /usr/share/keyrings/trivy.gpg > /dev/null
+
+echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main" | sudo tee -a /etc/apt/sources.list.d/trivy.list 
+
+sudo apt-get update
+
+sudo apt-get install trivy -y 
+--------------------------------------------
+trivy --version 
+
+
+
+Docker Credentials;
+
+username: bonibhujanga       
+password : Boni@499
+
+bonibhujanga - Boni@4999
+
+Sonar Token : squ_60086cb1a648d7fc4147e5d70d8a8a565ee94ca5
+
+global-settings - Is of the config file
+
+
+# On master node creare Role based Access with service account using yml file
+# Creating Service Account
+
+vi svc.yml
+--
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: jenkins
+  namespace: webapps
+---
+
+kubectl create ns webapps
+
+kubectl apply -f svc.yml
+
+
+# Create Role
+
+vi role.yml
+--- apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: app-role
+  namespace: webapps
+rules:
+  - apiGroups:
+        - ""
+        - apps
+        - autoscaling
+        - batch
+        - extensions
+        - policy
+        - rbac.authorization.k8s.io
+    resources:
+      - pods
+      - componentstatuses
+      - configmaps
+      - daemonsets
+      - deployments
+      - events
+      - endpoints
+      - horizontalpodautoscalers
+      - ingress
+      - jobs
+      - limitranges
+      - namespaces
+      - nodes
+      - pods
+      - persistentvolumes
+      - persistentvolumeclaims
+      - resourcequotas
+      - replicasets
+      - replicationcontrollers
+      - serviceaccounts
+      - services
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+------
+
+kubectl apply -f role.yml
+
+# Bind the role to service account
+vi bind.yml
+----
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: app-rolebinding
+  namespace: webapps 
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: app-role 
+subjects:
+- namespace: webapps 
+  kind: ServiceAccount
+  name: jenkins 
+
+------
+kubectl apply -f bind.yml
+
+
+vi sec.yml
+----
+
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: mysecretname
+  annotations:
+    kubernetes.io/service-account.name: jenkins
+---
+kubectl apply -f sec.yml -n webapps
+
+kubectl describe secret mysecretname -n webapps
+
+# get token and add it to global secrets 
+
+cd ~/.kube
+
+cat config 
+
+get server end point and cluster name 
+
+# on jenkins server 
+
+vi k.sh
+--- curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin
+kubectl version --short --client
+
+----
+
+
+
+
+rnqh eacg lvjk hqan - gmail app password
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
